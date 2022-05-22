@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
-
   <StraitjacketEscape>{0} c'est échappé de sa camisole de force!</StraitjacketEscape>
   <OverpoweredExhausted>{1} était trop fatigué pour résister.</OverpoweredExhausted>
   <OverpoweredMelee>{0} à réussi a forcer {1} dans la camisole de force quand il/elle a essayé de résister.</OverpoweredMelee>
@@ -13,5 +11,4 @@
   <CannotRemoveStraitjacket>Impossible d'enlever la camisole de force.</CannotRemoveStraitjacket>
   <MentalBreakAvertedLetterLabel>Crise évitée.</MentalBreakAvertedLetterLabel>
   <StraitjacketBenefit>Heureusement, sa camisole de force a prévenu q'il/elle se fasse mal ou qu'il/elle fasse mal aux autres.</StraitjacketBenefit>
-
 </LanguageData>

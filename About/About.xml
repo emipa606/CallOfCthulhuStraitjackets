@@ -1,23 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Call of Cthulhu - Straitjackets</name>
+  <name>Call of Cthulhu - Straitjackets (Continued)</name>
+  <packageId>Mlie.CallOfCthulhuStraitjackets</packageId>
   <author>Jecrell</author>
-  <targetVersion>1.0.2059</targetVersion>
-  <description>1.20.0.0 (10-19-2018)
+  <url>https://github.com/emipa606/CallOfCthulhuStraitjackets</url>
+  <supportedVersions>
+    <li>1.0</li>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>jecrell.jecstools</packageId>
+      <displayName>JecsTools</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/932008009</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>jecrell.jecstools</li>
+  </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of Jecrells mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=824831260
+based on the update by Santa!
+https://steamcommunity.com/sharedfiles/filedetails/?id=2232943730
 
-Straitjackets prevent colonists from hurting themselves and others by disabling mental breaks.
+[img]https://i.imgur.com/pufA0kM.png[/img]
 
-Thank you to my Patrons for supporting me in my efforts. Without you, none of this would be possible.
+[table]
+    [tr]
+        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/CallOfCthulhuStraitjackets][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+Adds straitjackets that disable mental breaks on colonists to prevent them from hurting themselves or others.
 
-These are the most excellent rim dwellers who support me: 
-Lumberjack, Shibby Says, TheJagermeister, Cory Bonifay, Kiya Nicoll, Matt Harris, Paul Fenwick, Grendalloffen, Martin K. Bonde, Bentley Alsup, Eric Idema, MasterScootie, GoSu, Josh McCabe, spook, Clifford Campbell, J, CrankyPeanut, E_T, Finwej, Jonathan, Audrin Navarro, Михаил Юрченко, John Kanady, Luis Figueroa, Midgeman, Nate Haug, Nemuri Hime, Richard Paul, SilentWeirdo, Calum, Calhoun Cattell, Keith Thoma, Tim Stillson, Dick Jones, Patrick, Nathan Getman, Populous25, Sharp Spook, Steven James, Marcus Sireanu, Mark, Emily Shaw, Drachken, Zalson, Baron Xot, Nicholas Bateman, Christopher, Justin Andres, Luis Salvatierra, TinyFloatingTurtle, George Chong Chuang Ming, John Boehr, Oliver White, roxxploxx, Robin Hager, Brachiaraidos, That Guy, Toc Anastar, Karol Rybak, Allic, Austin Harbert, Yewty, Evan Hwang, Ryan Brock, Jonathan Holzinger, MC, Alexander, Kevin Reagan, Alex Mederer, Toss Antilles, Chelsea Archambeau, Aron Glasser, Dan Winn, Fredric Sundberg, Sarah Banks, ted stevens
+[h1]When equipped:[/h1]
+[list]
+[*]Global Work Speed -98%
+[*]Manipulation 0%
+[*]Move Speed -70%
+[*]Mental Break Threshold Boosted
+[*]95% chance of disabling mental break
+[/list]
 
-========================
-Changelog
-========================
-1.20.0.0 (10-19-2018)
-========================
-Initial release for RimWorld 1.0.
+[h1]Available in...[/h1]
+English and Français (by byorh2) 
 
-</description>
+[h1]::::::::::::::::: REQUIRES JECSTOOLS TO WORK PROPERLY :::::::::::::::::::::::[/h1]
+- Get JecsTools here: http://steamcommunity.com/workshop/filedetails/?id=932008009
+
+Craftable at tailoring stations.
+
+[b]Powered by [url=https://ludeon.com/forums/index.php?topic=29517.0]Harmony[/url][/b]
+
+Pssst~~ 
+Still there? 
+Jecrell here, lead programmer of the Call of Cthulhu mod series. 
+
+Want more Cthulhu mods? Fuel my madness for mods here below. 
+https://patreon.com/jecrell
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
 </ModMetaData>

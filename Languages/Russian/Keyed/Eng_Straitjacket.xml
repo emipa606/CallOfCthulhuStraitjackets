@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
   <StraitjacketEscape>{0} освободился из своей смирительной рубашки!</StraitjacketEscape>
   <OverpoweredExhausted>{1} слишком устал, чтобы сопротивляться.</OverpoweredExhausted>
   <OverpoweredMelee>{0} сумел запеленать {1} в смирительную рубашку, когда тот пытался сопротивляться.</OverpoweredMelee>
@@ -12,5 +11,4 @@
   <CannotRemoveStraitjacket>Не удается снять смирительную рубашку.</CannotRemoveStraitjacket>
   <MentalBreakAvertedLetterLabel>Кризис предотвращен.</MentalBreakAvertedLetterLabel>
   <StraitjacketBenefit>К счастью, смирительная рубашка {0} помешала {1} причинить боль от обиды {2} или другим.</StraitjacketBenefit>
-
 </LanguageData>

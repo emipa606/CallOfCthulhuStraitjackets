@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
-
   <StraitjacketEscape>{0} has escaped out of their straitjacket!</StraitjacketEscape>
   <OverpoweredExhausted>{1} was too exhausted to resist being put into the straitjacket.</OverpoweredExhausted>
   <OverpoweredMelee>{0} overpowered {1} when they tried to resist being put into the straitjacket.</OverpoweredMelee>
@@ -13,5 +11,4 @@
   <CannotRemoveStraitjacket>Cannot remove straitjacket</CannotRemoveStraitjacket>
   <MentalBreakAvertedLetterLabel>Break averted</MentalBreakAvertedLetterLabel>
   <StraitjacketBenefit>Thankfully, {0} straitjacket prevented {1} from hurting {2} or others.</StraitjacketBenefit>
-	
 </LanguageData>
