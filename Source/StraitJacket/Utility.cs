@@ -1,8 +1,4 @@
-﻿// ----------------------------------------------------------------------
-// These are basic usings. Always let them be here.
-// ----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -10,36 +6,8 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
-// ----------------------------------------------------------------------
-// These are RimWorld-specific usings. Activate/Deactivate what you need:
-// ----------------------------------------------------------------------
-// Always needed
-//using VerseBase;         // Material/Graphics handling functions are found here
-// RimWorld universal objects are here (like 'Building')
-// Needed when you do something with the AI
-// Needed when you do something with Sound
-// Needed when you do something with Noises
-// RimWorld specific functions are found here (like 'Building_Battery')
-// RimWorld specific functions for world creation
-//using RimWorld.SquadAI;  // RimWorld specific functions for squad brains 
 
 namespace Cthulhu;
-
-public static class ModProps
-{
-    public const string main = "Cthulhu";
-    public const string mod = "Straitjackets";
-    public const string version = "1.17.0";
-}
-
-public static class SanityLossSeverity
-{
-    public const float Initial = 0.1f;
-    public const float Minor = 0.25f;
-    public const float Major = 0.5f;
-    public const float Severe = 0.7f;
-    public const float Extreme = 0.95f;
-}
 
 public static class Utility
 {
@@ -62,7 +30,7 @@ public static class Utility
     public static bool loadedCults;
     public static bool loadedFactions;
 
-    public static string Prefix => ModProps.main + " :: " + ModProps.mod + " " + ModProps.version + " :: ";
+    public static string Prefix => $"{ModProps.main} :: {ModProps.mod} {ModProps.version} :: ";
 
 
     public static bool IsMorning(Map map)
@@ -189,7 +157,7 @@ public static class Utility
             return ResultFalseWithReport(s);
         }
 
-        s.Append("ActorAvailble: Passed downed check & downedAllowed = " + downedAllowed);
+        s.Append($"ActorAvailble: Passed downed check & downedAllowed = {downedAllowed}");
         s.AppendLine();
         if (preacher.Drafted)
         {
@@ -348,10 +316,10 @@ public static class Utility
 
         goto IL_A5;
         IL_84:
-        Log.Warning("Didn't get age for " + pawn);
+        Log.Warning($"Didn't get age for {pawn}");
         return;
         IL_95:
-        Log.Error("Tried 100 times to generate age for " + pawn);
+        Log.Error($"Tried 100 times to generate age for {pawn}");
         IL_A5:
         pawn.ageTracker.AgeBiologicalTicks = (long)(num2 * 3600000f) + Rand.Range(0, 3600000);
         int num3;
@@ -845,11 +813,13 @@ public static class Utility
                 loadedCults = true;
             }
 
-            if (ResolvedMod.Name.Contains("Call of Cthulhu - Factions"))
+            if (!ResolvedMod.Name.Contains("Call of Cthulhu - Factions"))
             {
-                DebugReport("Loaded - Call of Cthulhu - Factions");
-                loadedFactions = true;
+                continue;
             }
+
+            DebugReport("Loaded - Call of Cthulhu - Factions");
+            loadedFactions = true;
         }
 
         modCheck = true;

@@ -140,9 +140,9 @@ internal static class _MentalBreaker
                     .CapitalizeFirst();
                 if (reason != null)
                 {
-                    text = text + "\n\n" + "MentalBreakReason".Translate(reason);
-                    text = text + "\n\n" + "StraitjacketBenefit".Translate(_this.GetPawn().gender.GetPossessive(),
-                        _this.GetPawn().gender.GetObjective(), _this.GetPawn().gender.GetObjective() + "self");
+                    text = $"{text}\n\n" + "MentalBreakReason".Translate(reason);
+                    text = $"{text}\n\n" + "StraitjacketBenefit".Translate(_this.GetPawn().gender.GetPossessive(),
+                        _this.GetPawn().gender.GetObjective(), $"{_this.GetPawn().gender.GetObjective()}self");
                 }
 
                 Find.LetterStack.ReceiveLetter(label, text, stateDef.beginLetterDef, _this.GetPawn());
@@ -150,7 +150,7 @@ internal static class _MentalBreaker
             }
 
             _this.StripStraitJacket();
-            Messages.Message(_this.GetPawn().LabelCap + " has escaped out of their straitjacket!", _this.GetPawn(),
+            Messages.Message($"{_this.GetPawn().LabelCap} has escaped out of their straitjacket!", _this.GetPawn(),
                 MessageTypeDefOf.NegativeEvent);
         }
 

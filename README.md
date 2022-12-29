@@ -42,8 +42,6 @@ Pssst~~
 Still there? 
 Jecrell here, lead programmer of the Call of Cthulhu mod series. 
 
-Want more Cthulhu mods? Fuel my madness for mods here below. 
-https://patreon.com/jecrell
 
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
@@ -57,3 +55,4 @@ https://patreon.com/jecrell
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2811471809]Last updated 2022-12-29
