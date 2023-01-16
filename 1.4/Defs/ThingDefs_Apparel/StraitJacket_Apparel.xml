@@ -76,6 +76,10 @@
     <generateAllowChance>0.0</generateAllowChance>
     <generateCommonality>0.0</generateCommonality>
     <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
       <bodyPartGroups>
         <li>Torso</li>
         <li>Shoulders</li>
@@ -91,7 +95,9 @@
       <defaultOutfitTags>
         <li>CallOfCthulhu_InsanePawn</li>
       </defaultOutfitTags>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
     </apparel>
+    <allowedArchonexusCount>1</allowedArchonexusCount>
     <recipeMaker>
       <recipeUsers>
         <li>ElectricTailoringBench</li>

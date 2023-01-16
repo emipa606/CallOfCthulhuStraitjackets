@@ -1,5 +1,8 @@
 # Changelog for CallOfCthulhuStraitjackets
 
+1.4.2 - Should now be possible to put jackets on children as well.
+
+
 1.4.1 - Updated to 1.4.
 Used DeepL to update translations for ChineseSimplified, German
 

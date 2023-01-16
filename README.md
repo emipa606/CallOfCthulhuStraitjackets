@@ -55,4 +55,5 @@ Jecrell here, lead programmer of the Call of Cthulhu mod series.
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2811471809]Last updated 2022-12-29
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2811471809]Last updated 2023-01-16
