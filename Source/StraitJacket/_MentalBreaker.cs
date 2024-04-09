@@ -55,7 +55,7 @@ internal static class _MentalBreaker
         //        Log.ErrorOnce("Unable to reflect MentalBreaker.pawn!", 215432421);
         //    }
         //}
-        return (MentalBreakIntensity)result.GetValue(_this, null);
+        return (MentalBreakIntensity)result?.GetValue(_this, null)!;
     }
 
     internal static bool GetCanDoRandomMentalBreaks(this MentalBreaker _this)
@@ -70,7 +70,7 @@ internal static class _MentalBreaker
         //        Log.ErrorOnce("Unable to reflect MentalBreaker.pawn!", 215432421);
         //    }
         //}
-        return (bool)result.GetValue(_this, null);
+        return (bool)result?.GetValue(_this, null)!;
     }
 
     internal static IEnumerable<MentalBreakDef> GetCurrentPossibleMoodBreaks(this MentalBreaker _this)
@@ -84,7 +84,7 @@ internal static class _MentalBreaker
         //        Log.ErrorOnce("Unable to reflect MentalBreaker.pawn!", 215432421);
         //    }
         //}
-        return (IEnumerable<MentalBreakDef>)result.GetValue(_this, null);
+        return (IEnumerable<MentalBreakDef>)result?.GetValue(_this, null)!;
     }
 
     // Verse.MentalBreaker
@@ -120,7 +120,7 @@ internal static class _MentalBreaker
         Thought thought = null;
         if (method != null)
         {
-            thought = (Thought)method.Invoke(_this, new object[] { });
+            thought = (Thought)method.Invoke(_this, []);
         }
 
         //if (temp != null) thought = (Thought)temp.GetValue(_this);

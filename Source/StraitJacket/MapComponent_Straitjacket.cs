@@ -68,12 +68,7 @@ internal class MapComponent_StraitJacket : MapComponent
 
     private void PerformStraitJacketCheck()
     {
-        if (map.mapPawns == null)
-        {
-            return;
-        }
-
-        if (map.mapPawns.FreeColonists == null)
+        if (map.mapPawns?.FreeColonists == null)
         {
             return;
         }
@@ -162,7 +157,7 @@ internal class MapComponent_StraitJacket : MapComponent
                     p.health.AddHediff(pawnJacketHediff);
                 }
 
-                giveThoughtToAll = true; //Different than prisoners
+                giveThoughtToAll = true; //Different from prisoners
             }
 
             if (jacketOn)

@@ -17,6 +17,12 @@ public class StraitjacketFloatMenuPatch : FloatMenuPatch
 
         var straitjacketCondition = new _Condition(_ConditionType.IsType, typeof(Pawn));
 
+        var
+            curSec = new KeyValuePair<_Condition, Func<Vector3, Pawn, Thing, List<FloatMenuOption>>>
+                (straitjacketCondition, StraitjacketFunc);
+        floatMenus.Add(curSec);
+        return floatMenus;
+
         List<FloatMenuOption> StraitjacketFunc(Vector3 clickPos, Pawn pawn, Thing curThing)
         {
             var opts = new List<FloatMenuOption>();
@@ -102,11 +108,5 @@ public class StraitjacketFloatMenuPatch : FloatMenuPatch
 
             return opts;
         }
-
-        var
-            curSec = new KeyValuePair<_Condition, Func<Vector3, Pawn, Thing, List<FloatMenuOption>>>
-                (straitjacketCondition, StraitjacketFunc);
-        floatMenus.Add(curSec);
-        return floatMenus;
     }
 }

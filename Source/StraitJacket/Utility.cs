@@ -76,12 +76,7 @@ public static class Utility
             return false;
         }
 
-        if (thing.GetType() == type)
-        {
-            return true;
-        }
-
-        return false;
+        return thing.GetType() == type;
     }
 
     //public static float GetSanityLossRate(PawnKindDef kindDef)
@@ -121,12 +116,7 @@ public static class Utility
             return false;
         }
 
-        if (pawn.WorkTagIsDisabled(WorkTags.Violent))
-        {
-            return false;
-        }
-
-        return true;
+        return !pawn.WorkTagIsDisabled(WorkTags.Violent);
     }
 
     public static bool IsActorAvailable(Pawn preacher, bool downedAllowed = false)
@@ -404,9 +394,8 @@ public static class Utility
 
                 //Don't wipe existing objets...
                 var thingList = current.GetThingList(map);
-                for (var i = 0; i < thingList.Count; i++)
+                foreach (var thing in thingList)
                 {
-                    var thing = thingList[i];
                     if (thing.def.category != ThingCategory.Plant && GenSpawn.SpawningWipes(def, thing.def))
                     {
                         return false;
@@ -470,9 +459,9 @@ public static class Utility
     {
         foreach (var current in set.GetNotMissingParts())
         {
-            for (var i = 0; i < current.def.tags.Count; i++)
+            foreach (var tagDef in current.def.tags)
             {
-                if (current.def.tags[i].defName == "BloodPumpingSource")
+                if (tagDef.defName == "BloodPumpingSource")
                 {
                     return current;
                 }
@@ -486,9 +475,9 @@ public static class Utility
     {
         foreach (var current in set.GetNotMissingParts())
         {
-            for (var i = 0; i < current.def.tags.Count; i++)
+            foreach (var tagDef in current.def.tags)
             {
-                if (current.def.tags[i].defName == "BloodPumpingSource")
+                if (tagDef.defName == "BloodPumpingSource")
                 {
                     return current;
                 }
@@ -576,10 +565,10 @@ public static class Utility
     }
 
     //public static bool TryGetUnreservedPewSpot(Thing pew, Pawn claimer, out IntVec3 loc)
-    //{
+    //
     //    loc = IntVec3.Invalid;
 
-    //    Map map = pew.Map;
+    //    Map = pew.Map;
     //    Rot4 currentDirection = pew.Rotation;
 
     //    IntVec3 CellNorth = pew.Position + GenAdj.CardinalDirections[Rot4.North.AsInt];
@@ -611,12 +600,14 @@ public static class Utility
     {
         var researchProgressInfo =
             typeof(ResearchManager).GetField("progress", BindingFlags.Instance | BindingFlags.NonPublic);
+        var currentProj =
+            typeof(ResearchManager).GetField("currentProj", BindingFlags.Instance | BindingFlags.NonPublic);
         var researchProgress = researchProgressInfo?.GetValue(Find.ResearchManager);
         var itemPropertyInfo = researchProgress?.GetType().GetProperty("Item");
-        itemPropertyInfo?.SetValue(researchProgress, progressValue, new object[] { projectDef });
+        itemPropertyInfo?.SetValue(researchProgress, progressValue, [projectDef]);
         if (deselectCurrentResearch)
         {
-            Find.ResearchManager.currentProj = null;
+            currentProj?.SetValue(Find.ResearchManager, null);
         }
 
         Find.ResearchManager.ReapplyAllMods();
@@ -632,12 +623,7 @@ public static class Utility
 
         var pawnSanityHediff =
             pawn.health.hediffSet.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamed(sanityLossDef));
-        if (pawnSanityHediff != null)
-        {
-            return pawnSanityHediff.Severity;
-        }
-
-        return 0f;
+        return pawnSanityHediff?.Severity ?? 0f;
     }
 
 

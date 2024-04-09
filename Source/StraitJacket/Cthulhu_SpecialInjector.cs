@@ -6,12 +6,12 @@ namespace Cthulhu.NoCCL;
 public class Cthulhu_SpecialInjector : SpecialInjector
 {
     private static readonly BindingFlags[] bindingFlagCombos =
-    {
+    [
         BindingFlags.Instance | BindingFlags.Public,
         BindingFlags.Static | BindingFlags.Public,
         BindingFlags.Instance | BindingFlags.NonPublic,
         BindingFlags.Static | BindingFlags.NonPublic
-    };
+    ];
 
     private static Assembly Assembly => Assembly.GetAssembly(typeof(DetourInjector));
 

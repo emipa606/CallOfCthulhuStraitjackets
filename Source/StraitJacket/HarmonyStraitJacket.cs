@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cthulhu;
 using HarmonyLib;
 using RimWorld;
@@ -10,12 +9,12 @@ using Verse.AI;
 namespace StraitJacket;
 
 /*
- * 
+ *
  *  Harmony Classes
  *  ===============
  *  Harmony is a system developed by pardeike (aka Brrainz).
- *  It allows us to use pre/post method patches instead of using detours.
- * 
+ *  It allows us to use pre- / post-method patches instead of using detours.
+ *
  */
 [StaticConstructorOnStartup]
 internal static class HarmonyStraitJacket
@@ -24,22 +23,22 @@ internal static class HarmonyStraitJacket
     /*
      * Contains 4 Harmony patches for 4 vanilla methods.
      * ===================
-     * 
+     *
      * [PREFIX] JobGiver_OptimizeApparel -> SetNextOptimizeTick
      * [POSTFIX] ITab_Pawn_Gear -> InterfaceDrop
      * [POSTFIX] MentalBreaker -> get_CurrentPossibleMoodBreaks
      * [POSTFIX] FloatMenuMakerMap -> AddHumanlikeOrders
-     * 
+     *
      */
     static HarmonyStraitJacket()
     {
         var harmony = new Harmony("rimworld.jecrell.straitjacket");
         harmony.Patch(AccessTools.Method(typeof(JobGiver_OptimizeApparel), "SetNextOptimizeTick"),
-            new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod("SetNextOptimizeTickPreFix")));
+            new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod(nameof(SetNextOptimizeTickPreFix))));
         harmony.Patch(AccessTools.Method(typeof(ITab_Pawn_Gear), "InterfaceDrop"),
-            new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod("InterfaceDropPreFix")));
+            new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod(nameof(InterfaceDropPreFix))));
         harmony.Patch(AccessTools.Method(typeof(MentalBreaker), "get_CurrentPossibleMoodBreaks"), null,
-            new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod("CurrentPossibleMoodBreaksPostFix")));
+            new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod(nameof(CurrentPossibleMoodBreaksPostFix))));
         //harmony.Patch(AccessTools.Method(typeof(FloatMenuMakerMap), "AddHumanlikeOrders"), null, new HarmonyMethod(typeof(HarmonyStraitJacket).GetMethod("AddHumanlikeOrdersPostFix")));
     }
 
@@ -57,7 +56,7 @@ internal static class HarmonyStraitJacket
         }
 
         var thought = (Thought)AccessTools.Method(typeof(MentalBreaker), "RandomFinalStraw")
-            .Invoke(__instance, new object[] { });
+            .Invoke(__instance, []);
         var reason = thought?.LabelCap ?? "";
 
         //Reset the mind state because we probably tried to start something before this process started.
@@ -106,16 +105,16 @@ internal static class HarmonyStraitJacket
     // RimWorld.ITab_Pawn_Gear
     /*
      *  PreFix
-     * 
+     *
      *  Disables the drop button's effect if the user is wearing a straitjacket.
      *  A straitjacket user should not be able to take it off by themselves, right?
-     *  
+     *
      */
     public static bool InterfaceDropPreFix(ITab_Pawn_Gear __instance, Thing t)
     {
         var apparel = t as Apparel;
         var __pawn = (Pawn)AccessTools.Method(typeof(ITab_Pawn_Gear), "get_SelPawnForGear")
-            .Invoke(__instance, Array.Empty<object>());
+            .Invoke(__instance, []);
         if (__pawn == null)
         {
             return true;
@@ -140,19 +139,14 @@ internal static class HarmonyStraitJacket
     // RimWorld.JobGiver_OptimizeApparel
     /*
      *  PreFix
-     * 
+     *
      *  This code prevents prisoners/colonists from automatically changing
      *  out of straitjackets into other clothes.
-     *  
+     *
      */
     public static bool SetNextOptimizeTickPreFix(JobGiver_OptimizeApparel __instance, Pawn pawn)
     {
-        if (pawn == null)
-        {
-            return true;
-        }
-
-        if (pawn.outfits == null)
+        if (pawn?.outfits == null)
         {
             return true;
         }
@@ -168,24 +162,19 @@ internal static class HarmonyStraitJacket
             return true;
         }
 
-        if (wornApparel.FirstOrDefault(x => x.def == StraitjacketDefOf.ROM_Straitjacket) != null)
-        {
-            return false;
-        }
-
-        return true;
+        return wornApparel.FirstOrDefault(x => x.def == StraitjacketDefOf.ROM_Straitjacket) == null;
     }
 
     // RimWorld.FloatMenuMakerMap
     /*
      *  PostFix
-     * 
+     *
      *  This code adds to the float menu list.
-     * 
+     *
      *  Adds:
      *    + Force straitjacket on _____
      *    + Help _____ out of straitjacket
-     * 
+     *
      */
     public static void AddHumanlikeOrdersPostFix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
     {
@@ -284,11 +273,11 @@ internal static class HarmonyStraitJacket
     // Verse.MentalBreaker
     /*
      *  PreFix
-     * 
+     *
      *  By calling this code first, we can check if the pawn involved is wearing a straitjacket.
      *  If the colonist is wearing a straitjacket, do not trigger a standard mental break.
      *  Instead, declare te mental break averted.
-     * 
+     *
      */
     public static bool TryDoRandomMoodCausedMentalBreakPreFix(MentalBreaker __instance)
     {
@@ -314,7 +303,7 @@ internal static class HarmonyStraitJacket
         }
 
         var thought = (Thought)AccessTools.Method(typeof(MentalBreaker), "RandomMentalBreakReason")
-            .Invoke(__instance, new object[] { });
+            .Invoke(__instance, []);
         var mentalBreaksList = (IEnumerable<MentalBreakDef>)AccessTools
             .Property(typeof(MentalBreaker), "CurrentPossibleMoodBreaks").GetValue(__instance, null);
         var reason = thought?.LabelCap;

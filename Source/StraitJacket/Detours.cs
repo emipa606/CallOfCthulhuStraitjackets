@@ -7,9 +7,9 @@ namespace Cthulhu.NoCCL;
 
 public static class Detours
 {
-    private static readonly List<string> detoured = new List<string>();
+    private static readonly List<string> detoured = [];
 
-    private static readonly List<string> destinations = new List<string>();
+    private static readonly List<string> destinations = [];
 
     public static unsafe bool TryDetourFromTo(MethodInfo source, MethodInfo destination)
     {
