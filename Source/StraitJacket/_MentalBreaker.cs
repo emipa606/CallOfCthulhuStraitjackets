@@ -27,23 +27,6 @@ internal static class _MentalBreaker
         return (Pawn)_pawn?.GetValue(_this);
     }
 
-    internal static Thought GetRandomMentalBreakReason(this MentalBreaker _this)
-    {
-        if (_randomMentalBreakReason != null)
-        {
-            return (Thought)_randomMentalBreakReason.GetValue(_this);
-        }
-
-        _randomMentalBreakReason = typeof(MentalBreaker).GetField("RandomMentalBreakReason",
-            BindingFlags.Instance | BindingFlags.NonPublic);
-        if (_randomMentalBreakReason == null)
-        {
-            Log.ErrorOnce("Unable to reflect MentalBreaker.RandomMentalBreakReason!", 215432421);
-        }
-
-        return (Thought)_randomMentalBreakReason?.GetValue(_this);
-    }
-
     internal static MentalBreakIntensity GetCurrentDesiredMoodBreakIntensity(this MentalBreaker _this)
     {
         //if (_MentalBreaker._pawn == null)
@@ -56,21 +39,6 @@ internal static class _MentalBreaker
         //    }
         //}
         return (MentalBreakIntensity)result?.GetValue(_this, null)!;
-    }
-
-    internal static bool GetCanDoRandomMentalBreaks(this MentalBreaker _this)
-    {
-        //if (_MentalBreaker._pawn == null)
-        //{
-        var result =
-            typeof(MentalBreaker).GetProperty("CanDoRandomMentalBreaks",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-        //    if (_MentalBreaker._pawn == null)
-        //    {
-        //        Log.ErrorOnce("Unable to reflect MentalBreaker.pawn!", 215432421);
-        //    }
-        //}
-        return (bool)result?.GetValue(_this, null)!;
     }
 
     internal static IEnumerable<MentalBreakDef> GetCurrentPossibleMoodBreaks(this MentalBreaker _this)
@@ -91,7 +59,7 @@ internal static class _MentalBreaker
     [Detour(typeof(MentalBreaker), bindingFlags = BindingFlags.Instance | BindingFlags.Public)]
     internal static bool TryDoRandomMoodCausedMentalBreak(this MentalBreaker _this)
     {
-        if (!_this.GetCanDoRandomMentalBreaks() || _this.GetPawn().Downed || !_this.GetPawn().Awake())
+        if (!_this.CanDoRandomMentalBreaks || _this.GetPawn().Downed || !_this.GetPawn().Awake())
         {
             return false;
         }
@@ -115,7 +83,7 @@ internal static class _MentalBreaker
         }
 
         var method =
-            typeof(MentalBreaker).GetMethod("RandomMentalBreakReason", BindingFlags.Instance | BindingFlags.NonPublic);
+            typeof(MentalBreaker).GetMethod("RandomFinalStraw", BindingFlags.Instance | BindingFlags.NonPublic);
 
         Thought thought = null;
         if (method != null)
