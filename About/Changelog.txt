@@ -1,5 +1,8 @@
 # Changelog for CallOfCthulhuStraitjackets
 
+1.5.1 - Some methods have changed signatures since the beta, thanks BryanAldrich for the PR
+
+
 1.5.0 - Mod updated for 1.5 and passed autotests
 
 

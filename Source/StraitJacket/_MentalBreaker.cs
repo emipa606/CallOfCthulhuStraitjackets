@@ -9,7 +9,6 @@ namespace Cthulhu.Detour;
 internal static class _MentalBreaker
 {
     internal static FieldInfo _pawn;
-    internal static FieldInfo _randomMentalBreakReason;
 
     internal static Pawn GetPawn(this MentalBreaker _this)
     {
