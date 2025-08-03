@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: colonist wore straitjacket -->
+  <ROM_ColonistWoreStraitjacket.stages.colonist_wore_straitjacket.label>colonist wore straitjacket</ROM_ColonistWoreStraitjacket.stages.colonist_wore_straitjacket.label>
+  <!-- EN: What kind of colony is this turning into? -->
+  <ROM_ColonistWoreStraitjacket.stages.colonist_wore_straitjacket.description>What kind of colony is this turning into?</ROM_ColonistWoreStraitjacket.stages.colonist_wore_straitjacket.description>
+  <!-- EN: wore straitjacket -->
+  <ROM_WoreStraitjacket.stages.wore_straitjacket.label>wore straitjacket</ROM_WoreStraitjacket.stages.wore_straitjacket.label>
+  <!-- EN: The colony had me wear a strait jacket for a while. -->
+  <ROM_WoreStraitjacket.stages.wore_straitjacket.description>The colony had me wear a strait jacket for a while.</ROM_WoreStraitjacket.stages.wore_straitjacket.description>
+</LanguageData>

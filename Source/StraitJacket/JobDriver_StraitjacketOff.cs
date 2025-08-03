@@ -10,7 +10,7 @@ public class JobDriver_StraitjacketOff : JobDriver
 {
     private const TargetIndex TakeeIndex = TargetIndex.A;
 
-    protected Pawn Takee => (Pawn)job.GetTarget(TargetIndex.A).Thing;
+    private Pawn Takee => (Pawn)job.GetTarget(TargetIndex.A).Thing;
 
     public override bool TryMakePreToilReservations(bool yeaaaa)
     {

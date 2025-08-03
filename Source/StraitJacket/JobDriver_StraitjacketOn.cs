@@ -14,24 +14,19 @@ public class JobDriver_StraitjacketOn : JobDriver
     private const TargetIndex StraitjacketIndex = TargetIndex.B;
 
 
-    protected Pawn Takee => (Pawn)job.GetTarget(TargetIndex.A).Thing;
+    private Pawn Takee => (Pawn)job.GetTarget(TargetIndex.A).Thing;
 
-    protected Apparel Straitjacket => (Apparel)job.GetTarget(TargetIndex.B).Thing;
+    private Apparel Straitjacket => (Apparel)job.GetTarget(TargetIndex.B).Thing;
 
     // Verse.Pawn
-    public bool CheckAcceptStraitJacket(Pawn victim, Pawn arrester)
+    private static bool CheckAcceptStraitJacket(Pawn victim, Pawn arrester)
     {
         if (victim.Faction == arrester.Faction && !victim.InMentalState)
         {
             return true;
         }
 
-        if (arrester.TryGrapple(victim))
-        {
-            return true;
-        }
-
-        return false;
+        return arrester.TryGrapple(victim);
     }
 
 

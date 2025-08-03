@@ -8,9 +8,9 @@ namespace Cthulhu.Detour;
 
 internal static class _MentalBreaker
 {
-    internal static FieldInfo _pawn;
+    private static FieldInfo _pawn;
 
-    internal static Pawn GetPawn(this MentalBreaker _this)
+    private static Pawn GetPawn(this MentalBreaker _this)
     {
         if (_pawn != null)
         {
@@ -26,31 +26,17 @@ internal static class _MentalBreaker
         return (Pawn)_pawn?.GetValue(_this);
     }
 
-    internal static MentalBreakIntensity GetCurrentDesiredMoodBreakIntensity(this MentalBreaker _this)
+    private static MentalBreakIntensity GetCurrentDesiredMoodBreakIntensity(this MentalBreaker _this)
     {
-        //if (_MentalBreaker._pawn == null)
-        //{
         var result = typeof(MentalBreaker).GetProperty("CurrentDesiredMoodBreakIntensity",
             BindingFlags.Instance | BindingFlags.NonPublic);
-        //    if (_MentalBreaker._pawn == null)
-        //    {
-        //        Log.ErrorOnce("Unable to reflect MentalBreaker.pawn!", 215432421);
-        //    }
-        //}
         return (MentalBreakIntensity)result?.GetValue(_this, null)!;
     }
 
-    internal static IEnumerable<MentalBreakDef> GetCurrentPossibleMoodBreaks(this MentalBreaker _this)
+    private static IEnumerable<MentalBreakDef> GetCurrentPossibleMoodBreaks(this MentalBreaker _this)
     {
-        //if (_MentalBreaker._pawn == null)
-        //{
         var result = typeof(MentalBreaker).GetProperty("CurrentPossibleMoodBreaks",
             BindingFlags.Instance | BindingFlags.NonPublic);
-        //    if (_MentalBreaker._pawn == null)
-        //    {
-        //        Log.ErrorOnce("Unable to reflect MentalBreaker.pawn!", 215432421);
-        //    }
-        //}
         return (IEnumerable<MentalBreakDef>)result?.GetValue(_this, null)!;
     }
 
@@ -90,9 +76,6 @@ internal static class _MentalBreaker
             thought = (Thought)method.Invoke(_this, []);
         }
 
-        //if (temp != null) thought = (Thought)temp.GetValue(_this);
-
-
         var reason = thought?.LabelCap;
 
 
@@ -126,7 +109,7 @@ internal static class _MentalBreaker
         return true;
     }
 
-    internal static bool IsWearingStraitJacket(this MentalBreaker _this)
+    private static bool IsWearingStraitJacket(this MentalBreaker _this)
     {
         if (_this.GetPawn().apparel == null)
         {
@@ -145,7 +128,7 @@ internal static class _MentalBreaker
     }
 
 
-    internal static void StripStraitJacket(this MentalBreaker _this)
+    private static void StripStraitJacket(this MentalBreaker _this)
     {
         var pawn = _this.GetPawn();
         if (pawn.apparel == null)

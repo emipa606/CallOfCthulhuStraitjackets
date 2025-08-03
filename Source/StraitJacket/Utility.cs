@@ -21,16 +21,16 @@ public static class Utility
         Extreme
     }
 
-    public const string SanityLossDef = "ROM_SanityLoss";
-    public const string AltSanityLossDef = "Cults_SanityLoss";
+    private const string SanityLossDef = "ROM_SanityLoss";
+    private const string AltSanityLossDef = "Cults_SanityLoss";
 
-    public static bool modCheck;
-    public static bool loadedCosmicHorrors;
-    public static bool loadedIndustrialAge;
-    public static bool loadedCults;
+    private static bool modCheck;
+    private static bool loadedCosmicHorrors;
+    private static bool loadedIndustrialAge;
+    private static bool loadedCults;
     public static bool loadedFactions;
 
-    public static string Prefix => $"{ModProps.main} :: {ModProps.mod} {ModProps.version} :: ";
+    private static string Prefix => $"{ModProps.main} :: {ModProps.mod} {ModProps.version} :: ";
 
 
     public static bool IsMorning(Map map)
@@ -175,7 +175,7 @@ public static class Utility
         return true;
     }
 
-    public static bool ResultFalseWithReport(StringBuilder s)
+    private static bool ResultFalseWithReport(StringBuilder s)
     {
         s.Append("ActorAvailble: Result = Unavailable");
         DebugReport(s.ToString());
@@ -225,7 +225,7 @@ public static class Utility
         return pawn;
     }
 
-    public static void CopyPawnRecords(Pawn pawn, Pawn newPawn)
+    private static void CopyPawnRecords(Pawn pawn, Pawn newPawn)
     {
         //Who has a relationship with this pet?
         Pawn pawnMaster = null;
@@ -273,7 +273,7 @@ public static class Utility
         }
     }
 
-    public static void GenerateRandomAge(Pawn pawn, Map map)
+    private static void GenerateRandomAge(Pawn pawn, Map map)
     {
         var num = 0;
         int num2;
@@ -515,10 +515,7 @@ public static class Utility
             }
 
             var pawn = PawnGenerator.GeneratePawn(kindDef, fac);
-            if (result == null)
-            {
-                result = pawn;
-            }
+            result ??= pawn;
 
             if (GenPlace.TryPlaceThing(pawn, at, map, ThingPlaceMode.Near))
             {
@@ -713,7 +710,7 @@ public static class Utility
         return p.skills.GetSkill(SkillDefOf.Intellectual).Level;
     }
 
-    public static bool IsCosmicHorrorsLoaded()
+    private static bool IsCosmicHorrorsLoaded()
     {
         if (!modCheck)
         {
@@ -770,7 +767,7 @@ public static class Utility
     }
 
 
-    public static void ModCheck()
+    private static void ModCheck()
     {
         loadedCosmicHorrors = false;
         loadedIndustrialAge = false;

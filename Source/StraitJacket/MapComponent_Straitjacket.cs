@@ -28,7 +28,6 @@ internal class MapComponent_StraitJacket : MapComponent
 
     public MapComponent_StraitJacket(Map map) : base(map)
     {
-        this.map = map;
         mapRecord = map;
     }
 
@@ -59,7 +58,7 @@ internal class MapComponent_StraitJacket : MapComponent
     }
 
     // Verse.MapPawns
-    public IEnumerable<Pawn> Prisoners(Map map)
+    private static IEnumerable<Pawn> Prisoners(Map map)
     {
         return from x in map.mapPawns.AllPawns
             where x.IsPrisoner

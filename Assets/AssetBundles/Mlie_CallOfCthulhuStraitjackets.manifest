@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 3229767535
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 93e917c86aa9cd6d27d8292f4b6f10cf
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 93e917c86aa9cd6d27d8292f4b6f10cf
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Thin_south.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Fat_north.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Child_east.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Male_north.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Hulk_south.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Fat_south.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Thin_east.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Male_south.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Female_east.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Fat_east.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Child_north.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Thin_north.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Female_north.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Hulk_east.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Male_east.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Hulk_north.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Child_south.png
+- Assets/Data/Mlie.CallOfCthulhuStraitjackets/Textures/Apparel/Bodywear_Clothing/StraitJacket/ROMStraitJacket_Female_south.png
+Dependencies: []

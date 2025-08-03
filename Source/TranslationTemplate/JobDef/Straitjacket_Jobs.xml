@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: forcing TargetA into straitjacket. -->
+  <ROM_ForceIntoStraitjacket.reportString>forcing TargetA into straitjacket.</ROM_ForceIntoStraitjacket.reportString>
+  <!-- EN: removing TargetA's straitjacket. -->
+  <ROM_TakeOffStraitjacket.reportString>removing TargetA's straitjacket.</ROM_TakeOffStraitjacket.reportString>
+</LanguageData>
