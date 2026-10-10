@@ -97,7 +97,6 @@ internal class MapComponent_StraitJacket : MapComponent
                 }
 
                 jacketOn = true;
-                //Log.Message("Straitjacket Prisoner Check");
 
                 straightjackedPawn = p;
                 p.needs.mood.thoughts.memories.TryGainMemory(StraitjacketDefOf.ROM_WoreStraitjacket);
@@ -177,13 +176,10 @@ internal class MapComponent_StraitJacket : MapComponent
             return;
         }
 
-        foreach (var p in colonists)
+        foreach (var p in colonists.Where(x => x != straightjackedPawn))
         {
-            if (p != straightjackedPawn)
-            {
-                p.needs.mood.thoughts.memories.TryGainMemory(StraitjacketDefOf
-                    .ROM_ColonistWoreStraitjacket);
-            }
+            p.needs.mood.thoughts.memories.TryGainMemory(StraitjacketDefOf
+                .ROM_ColonistWoreStraitjacket);
         }
     }
 

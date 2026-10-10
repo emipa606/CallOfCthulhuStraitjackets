@@ -2,22 +2,25 @@
   <PropertyGroup>
     <OutputPath>..\..\1.6\Assemblies</OutputPath>
     <TargetFramework>net48</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.6.0</FileVersion>
+    <FileVersion>1.6.1</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyVersion>1.6</AssemblyVersion>
+    <Product>Call of Cthulhu - Straitjackets (Continued)</Product>
+    <Copyright>© Jecrell 2026 - MIT License</Copyright>
+    <Nullable>warnings</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.6.4539-beta</Version>
+      <Version>*</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
-      <Version>*</Version>
+      <Version>3.0.0-rc.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <Reference Include="JecsTools">

@@ -6,4 +6,22 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="StraitJacket/StraitJacket.csproj" />
+  <Folder Name="/XML/1.6/Defs/ThingDefs_Apparel/">
+    <File Path="../1.6/Defs/ThingDefs_Apparel/StraitJacket_Apparel.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ThoughtDefs/">
+    <File Path="../1.6/Defs/ThoughtDefs/Thoughts_Memory_Straitjacket.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/HediffDefs/">
+    <File Path="../1.6/Defs/HediffDefs/Straitjacket_Hediff.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/Eng_Straitjacket.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/JobDefs/">
+    <File Path="../1.6/Defs/JobDefs/Straitjacket_Jobs.xml" />
+  </Folder>
 </Solution>

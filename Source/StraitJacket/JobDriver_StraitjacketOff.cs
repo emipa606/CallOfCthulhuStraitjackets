@@ -12,7 +12,7 @@ public class JobDriver_StraitjacketOff : JobDriver
 
     private Pawn Takee => (Pawn)job.GetTarget(TargetIndex.A).Thing;
 
-    public override bool TryMakePreToilReservations(bool yeaaaa)
+    public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
         return pawn.Reserve(job.targetA, job);
     }
@@ -20,17 +20,17 @@ public class JobDriver_StraitjacketOff : JobDriver
     [DebuggerHidden]
     protected override IEnumerable<Toil> MakeNewToils()
     {
-        this.FailOnDestroyedOrNull(TargetIndex.A);
-        yield return Toils_Reserve.Reserve(TargetIndex.A);
-        yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch)
-            .FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        this.FailOnDestroyedOrNull(TakeeIndex);
+        yield return Toils_Reserve.Reserve(TakeeIndex);
+        yield return Toils_Goto.GotoThing(TakeeIndex, PathEndMode.ClosestTouch)
+            .FailOnDespawnedNullOrForbidden(TakeeIndex);
         var toil2 = new Toil
         {
             defaultCompleteMode = ToilCompleteMode.Delay,
             defaultDuration = 1000
         };
-        toil2.WithProgressBarToilDelay(TargetIndex.A);
-        toil2.initAction = delegate { PawnUtility.ForceWait((Pawn)TargetA.Thing, toil2.defaultDuration, pawn); };
+        toil2.WithProgressBarToilDelay(TakeeIndex);
+        toil2.initAction = delegate { PawnUtility.ForceWait(Takee, toil2.defaultDuration, pawn); };
         yield return toil2;
 
         yield return new Toil

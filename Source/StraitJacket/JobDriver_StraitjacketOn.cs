@@ -30,7 +30,7 @@ public class JobDriver_StraitjacketOn : JobDriver
     }
 
 
-    public override bool TryMakePreToilReservations(bool yeaa)
+    public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
         return pawn.Reserve(job.targetA, job) && pawn.Reserve(job.targetB, job);
     }
@@ -38,21 +38,21 @@ public class JobDriver_StraitjacketOn : JobDriver
     [DebuggerHidden]
     protected override IEnumerable<Toil> MakeNewToils()
     {
-        this.FailOnDestroyedOrNull(TargetIndex.A);
-        this.FailOnDestroyedOrNull(TargetIndex.B);
-        yield return Toils_Reserve.Reserve(TargetIndex.A);
-        yield return Toils_Reserve.Reserve(TargetIndex.B);
-        yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.OnCell);
-        yield return Toils_Haul.StartCarryThing(TargetIndex.B);
-        yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch)
-            .FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        this.FailOnDestroyedOrNull(TakeeIndex);
+        this.FailOnDestroyedOrNull(StraitjacketIndex);
+        yield return Toils_Reserve.Reserve(TakeeIndex);
+        yield return Toils_Reserve.Reserve(StraitjacketIndex);
+        yield return Toils_Goto.GotoThing(StraitjacketIndex, PathEndMode.OnCell);
+        yield return Toils_Haul.StartCarryThing(StraitjacketIndex);
+        yield return Toils_Goto.GotoThing(TakeeIndex, PathEndMode.Touch)
+            .FailOnDespawnedNullOrForbidden(TakeeIndex);
         yield return new Toil
         {
             initAction = delegate
             {
                 pawn.carryTracker.TryDropCarriedThing(pawn.Position, ThingPlaceMode.Near, out _);
 
-                var pawnToForceIntoStraitjacket = (Pawn)TargetA.Thing;
+                var pawnToForceIntoStraitjacket = Takee;
                 if (pawnToForceIntoStraitjacket == null)
                 {
                     return;

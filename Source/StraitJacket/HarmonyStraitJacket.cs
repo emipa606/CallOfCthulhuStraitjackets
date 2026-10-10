@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cthulhu;
 using HarmonyLib;
 using RimWorld;
@@ -42,13 +43,10 @@ internal static class HarmonyStraitJacket
 
     // Verse.MentalBreaker
     public static void CurrentPossibleMoodBreaksPostFix(MentalBreaker __instance,
-        ref IEnumerable<MentalBreakDef> __result)
+        ref IEnumerable<MentalBreakDef> __result, Pawn ___pawn)
     {
-        //Declare variables for the process
-        var pawn = (Pawn)AccessTools.Field(typeof(MentalBreaker), "pawn").GetValue(__instance);
-
         //IsWearingStraitJacket
-        if (pawn?.apparel?.WornApparel?.FirstOrDefault(x => x.def == StraitjacketDefOf.ROM_Straitjacket) == null)
+        if (___pawn?.apparel?.WornApparel?.FirstOrDefault(x => x.def == StraitjacketDefOf.ROM_Straitjacket) == null)
         {
             return;
         }
@@ -58,9 +56,9 @@ internal static class HarmonyStraitJacket
         var reason = thought?.LabelCap ?? "";
 
         //Reset the mind state because we probably tried to start something before this process started.
-        //pawn.mindState.mentalStateHandler.Reset();
 
-        if (!(__result?.TryRandomElementByWeight(d => d.Worker.CommonalityFor(pawn), out var mentalBreakDef) ?? false))
+        if (!(__result?.TryRandomElementByWeight(d => d.Worker.CommonalityFor(___pawn), out var mentalBreakDef) ??
+              false))
         {
             return;
         }
@@ -72,30 +70,43 @@ internal static class HarmonyStraitJacket
                 ? DefDatabase<MentalStateDef>.GetNamed("Berserk")
                 : DefDatabase<MentalStateDef>.GetNamed("Wander_Psychotic"));
             string label = "MentalBreakAvertedLetterLabel".Translate() + ": " + stateDef.beginLetterLabel;
-            var text = string.Format(stateDef.beginLetter, pawn.Label).AdjustedFor(pawn).CapitalizeFirst();
-            text = text + "\n\n" + "StraitjacketBenefit".Translate(pawn.gender.GetPossessive(),
-                pawn.gender.GetObjective(), pawn.gender.GetObjective() + "self");
+            string text;
+            try
+            {
+                text = string.Format(stateDef.beginLetter, ___pawn.Label);
+            }
+            catch (FormatException)
+            {
+                // Fallback: replace {0} if format placeholders don't match expected args
+                text = stateDef.beginLetter.Replace("{0}", ___pawn.Label);
+            }
 
-            Find.LetterStack.ReceiveLetter(label, text, stateDef.beginLetterDef, pawn);
+            text = text.AdjustedFor(___pawn).CapitalizeFirst();
+            text = text.Replace("{Pawn_nameDef}", ___pawn.Label);
+            text = text.Replace("{Pawn_pronoun}", ___pawn.NameShortColored);
+            text = text + "\n\n" + "StraitjacketBenefit".Translate(___pawn.gender.GetPossessive(),
+                ___pawn.gender.GetObjective(), ___pawn.gender.GetObjective() + "self");
+
+            Find.LetterStack.ReceiveLetter(label, text, stateDef.beginLetterDef, ___pawn);
             __result = new List<MentalBreakDef>();
             return;
         }
 
         //StripStraitJacket
-        if (pawn.apparel?.WornApparel?.FirstOrDefault(x => x.def == StraitjacketDefOf.ROM_Straitjacket) is not
+        if (___pawn.apparel?.WornApparel?.FirstOrDefault(x => x.def == StraitjacketDefOf.ROM_Straitjacket) is not
             { } clothing)
         {
             return;
         }
 
-        if (pawn.apparel?.TryDrop(clothing, out _, pawn.Position) == null)
+        if (___pawn.apparel?.TryDrop(clothing, out _, ___pawn.Position) == null)
         {
             return;
         }
 
-        Messages.Message("StraitjacketEscape".Translate(pawn.LabelCap),
+        Messages.Message("StraitjacketEscape".Translate(___pawn.LabelCap),
             MessageTypeDefOf.ThreatBig); // MessageSound.SeriousAlert);
-        pawn.mindState.mentalStateHandler.TryStartMentalState(mentalBreakDef.mentalState, reason, false,
+        ___pawn.mindState.mentalStateHandler.TryStartMentalState(mentalBreakDef.mentalState, reason, false,
             true);
         __result = new List<MentalBreakDef>();
     }
@@ -129,7 +140,7 @@ internal static class HarmonyStraitJacket
         }
 
         Messages.Message("CannotRemoveByOneself".Translate(__pawn.Label),
-            MessageTypeDefOf.RejectInput); //MessageSound.RejectInput);
+            MessageTypeDefOf.RejectInput);
         return false;
     }
 
